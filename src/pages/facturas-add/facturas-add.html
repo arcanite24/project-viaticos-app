@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Agregar Factura</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <button ion-button block (click)="viewCtrl.dismiss()">Cancelar</button>
+  <ion-list radio-group style="margin-top: 1rem" [(ngModel)]="selectedGasto">
+    <ion-item *ngFor="let gasto of gastosArr">
+      <ion-label><strong>{{gasto.name}}</strong> - {{gasto.date}}</ion-label>
+      <ion-radio [value]="gasto"></ion-radio>
+    </ion-item>
+    <ion-item *ngFor="let gasto of globalesArr">
+      <ion-label><strong>{{gasto.name}}</strong> - {{gasto.date}}</ion-label>
+      <ion-radio [value]="gasto"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <button ion-button block color="secondary" (click)="viewCtrl.dismiss(selectedGasto)">Pedir factura</button>
+</ion-content>

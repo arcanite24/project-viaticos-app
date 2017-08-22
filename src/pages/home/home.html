@@ -1,14 +1,60 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <!--
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    -->
+    <ion-title>Viaticos</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<ion-content padding class="bg-map home-container">
+  <ion-grid class="circles-grid">
+    <ion-row class="circles-row">
+      <ion-col col-6 class="flex-col animated fadeInLeft delay-200" (click)="openPage('NewTravelDestinationPage')">
+        <div class="home-circle flex-col bg-green">
+          <ion-icon name="plane"></ion-icon>
+        </div>
+        <span class="circle-text">NUEVO VIAJE</span>
+      </ion-col>
+      <ion-col col-6 class="flex-col animated fadeInRight delay-200" (click)="openPage('TravelsPage')">
+        <div class="home-circle flex-col bg-blue">
+          <ion-icon name="archive"></ion-icon>
+        </div>
+        <span class="circle-text">VIAJES PASADOS</span>
+      </ion-col>
+    </ion-row>
+    <ion-row class="circles-row">
+      <ion-col col-6 class="flex-col animated fadeInLeft delay-400" (click)="openPage('ProfilePage')">
+        <div class="home-circle flex-col bg-orange">
+          <ion-icon name="person"></ion-icon>
+        </div>
+        <span class="circle-text">PERFIL</span>
+      </ion-col>
+      <ion-col col-6 class="flex-col animated fadeInRight delay-400" (click)="openPage('GlobalesPage')">
+        <div class="home-circle flex-col bg-red">
+          <ion-icon name="cash"></ion-icon>
+        </div>
+        <span class="circle-text">GASTOS GLOBALES</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-6 class="flex-col animated fadeInLeft delay-600" (click)="openPage('PoliticasPage')">
+          <div class="home-circle flex-col bg-cyan">
+            <ion-icon name="bookmarks"></ion-icon>
+          </div>
+          <span class="circle-text">POLITICAS</span>
+        </ion-col>
+        <ion-col col-6 class="flex-col animated fadeInRight delay-600" (click)="openPage('FacturasPage')">
+          <div class="home-circle flex-col bg-barney">
+            <ion-icon name="clipboard"></ion-icon>
+          </div>
+          <span class="circle-text">FACTURAS</span>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
 </ion-content>

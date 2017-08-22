@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Facturas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <ion-card class="flex-row-center gasto-card animated bounceInLeft" *ngFor="let gasto of facturas | async; let i = index;" (click)="openFacturaOptions(gasto)" [style.animation-delay]="i * 250 + 'ms'">
+    <div [ngSwitch]="gasto.status" style="width: 4rem">
+      <ion-icon name="checkmark" *ngSwitchCase="1" style="color: green"></ion-icon>
+      <ion-icon name="close" *ngSwitchCase="2" style="color: red"></ion-icon>
+      <ion-icon name="alert" *ngSwitchCase="3" style="color: yellow"></ion-icon>
+      <ion-icon name="help" *ngSwitchDefault></ion-icon>
+    </div>
+    <div class="gasto-name-container flex-col" style="align-items: flex-start;">
+      <span class="gasto-name">{{gasto.name}}</span>
+      <span class="gasto-desc c-54">{{gasto.desc}}</span>
+    </div>
+    <div class="gasto-info-container flex-col">
+      <span class="gasto-fecha c-54">{{gasto.date}}</span>
+      <span class="gasto-monto">${{gasto.amount | number}}</span>
+    </div>
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button (click)="openAddFactura()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

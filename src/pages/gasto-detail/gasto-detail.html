@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button (click)="viewCtrl.dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+    <ion-title>{{gasto.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <div class="category-container flex-row-center">
+    <div [ngSwitch]="gasto.category" style="font-size: 4rem;" class="c-white">
+      <ion-icon name="plane" *ngSwitchCase="'PLANE'"></ion-icon>
+      <ion-icon name="restaurant" *ngSwitchCase="'FOOD'"></ion-icon>
+      <ion-icon name="plane" *ngSwitchCase="'FLIGHTS'"></ion-icon>
+      <ion-icon name="speedometer" *ngSwitchCase="'GAS'"></ion-icon>
+      <ion-icon name="car" *ngSwitchCase="'UBER'"></ion-icon>
+      <ion-icon name="home" *ngSwitchCase="'HOSPEDAJE'"></ion-icon>
+      <ion-icon name="card" *ngSwitchCase="'SERVICES'"></ion-icon>
+      <ion-icon name="more" *ngSwitchCase="'OTHERS'"></ion-icon>
+      <ion-icon name="more" *ngSwitchDefault></ion-icon>
+    </div>
+    <div [ngSwitch]="gasto.category" style="font-size: 2rem;letter-spacing: 5px;margin-left: 1rem" class="c-white">
+      <span *ngSwitchCase="'PLANE'">AVIÓN</span>
+      <span *ngSwitchCase="'FOOD'">COMIDA</span>
+      <span *ngSwitchCase="'FLIGHTS'">VUELOS</span>
+      <span *ngSwitchCase="'GAS'">GASOLINA</span>
+      <span *ngSwitchCase="'UBER'">UBER</span>
+      <span *ngSwitchCase="'HOSPEDAJE'">HOSPEDAJE</span>
+      <span *ngSwitchCase="'SERVICES'">SERVICIOS</span>
+      <span *ngSwitchCase="'OTHERS'">OTROS</span>
+      <span *ngSwitchDefault>CATEGORÍA NO ASIGNADA</span>
+    </div>
+  </div>
+  <hr class="divider-1">
+  <p class="c-white text-center">{{gasto.desc}}</p>
+  <h3 class="c-white text-center">${{gasto.amount | number}}</h3>  
+  <h3 class="c-white text-center">Agregado: {{gasto.date}}</h3>
+  <hr class="divider-1">
+  <img [src]="gasto.ticket" alt="Ticket" *ngIf="gasto.ticket">
+</ion-content>

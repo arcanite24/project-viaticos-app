@@ -1,3 +1,35 @@
-page-home {
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  background: #212a5f url('../assets/img/bg-destination.png');
+  background-size: cover;
+}
+
+.home-circle {
+  padding: 1rem;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 2rem;
+
+  ion-icon {
+    font-size: 5rem;
+  }
 
 }
+
+.circle-text {
+  font-family: Helvetica;
+}
+
+.circles-grid { color: white; }
+.circles-row { margin-bottom: 3rem; }
+.bg-green { background-color: #32b023; }
+.bg-blue { background-color: #1d82fc; }
+.bg-orange { background-color: #ec9c27; }
+.bg-red { background-color: #d63b2f; }
+.bg-cyan { background-color: #29CEE0; }
+.bg-barney { background-color: #6944B2; }

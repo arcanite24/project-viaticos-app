@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Registrar cuenta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <div class="input-effect-container-1">
+    <input type="email" placeholder="Email" [(ngModel)]="registerData.email">
+  </div>
+  <div class="input-effect-container-1">
+    <input type="password" placeholder="Contraseña" [(ngModel)]="registerData.password">
+  </div>
+  <div class="input-effect-container-1">
+    <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="registerData.repassword">
+  </div>
+  <button ion-button block color="secondary" (click)="register()">Registrar</button>
+</ion-content>

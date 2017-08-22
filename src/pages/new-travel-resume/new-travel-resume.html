@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Resumen</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="resume-container flex-col">
+  <div class="input-effect-container-1">
+    <input type="text" placeholder="Nombre del viaje" [(ngModel)]="travelName">
+  </div>
+  <h5 *ngIf="travelData" class="c-white text-center"><strong>De</strong> {{travelData.prev.placeFrom.formatted_address}} <strong>a</strong> {{travelData.prev.placeTo.formatted_address}}</h5>
+  <hr class="divider-1">
+  <!-- Avion -->
+  <div *ngIf="travelData.prev.transport == 'AVION'" class="transport-container flex-row-center">
+    <ion-icon name="plane"></ion-icon>
+    <span>Avión: ${{travelData ? travelData.prev.flight.price : 0 | number}}</span>
+  </div>
+  <p *ngIf="travelData.prev.transport == 'AVION'" class="c-white text-center" style="font-size: 1.5rem; margin-top: 1rem;">{{travelData ? travelData.prev.flight.details : 'Sin detalles.'}}</p>
+  <!-- Auto -->
+  <div *ngIf="travelData.prev.transport == 'AUTO'" class="transport-container flex-row-center">
+    <ion-icon name="car"></ion-icon>
+    <span>Auto: ${{(travelData ? travelData.prev.car.estimate : 0) | number}}</span>
+  </div>
+  <p *ngIf="travelData.prev.transport == 'AUTO'" class="c-white text-center" style="font-size: 1.5rem; margin-top: 1rem;">{{travelData ? travelData.prev.car.car.car : 'Sin detalles.'}}</p>
+  <hr class="divider-1">
+  <div class="transport-container text-center">
+    <ion-icon name="home"></ion-icon>
+    <span *ngIf="travelData.hotel">Hotel: ${{travelData ? travelData.hotel.price : 0 | number}}</span>
+    <span *ngIf="!travelData.hotel">No requiere hotel</span>
+  </div>
+  <p *ngIf="travelData.hotel" class="c-white text-center" style="font-size: 1.5rem; margin-top: 1rem;">{{travelData ? travelData.hotel.info : 'Sin detalles.'}}</p>
+  <hr class="divider-1">
+  <p class="c-white text-center">Recuerda que puedes agregar más gastos desde la sección de <em>Viajes pasados</em>.</p>
+  <hr class="divider-1">
+  <button ion-button block color="secondary" [disabled]="!travelName || travelName.length <= 0" (click)="createTravel()">Crear Viaje</button>
+</ion-content>

@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{(travel | async)?.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <div class="title-container animated bounceInDown">
+    <ion-icon name="plane" *ngIf="(travel | async)?.transport == 'AVION'"></ion-icon>
+    <ion-icon name="car" *ngIf="(travel | async)?.transport == 'AUTO'"></ion-icon>
+    <ion-icon name="bus" *ngIf="(travel | async)?.transport == 'BUS'"></ion-icon>
+    <span>{{(travel | async)?.transport}}: </span>
+    <span *ngIf="(travel | async)?.transport == 'AVION'">${{(travel | async)?.flight.price | number}}</span>
+    <span *ngIf="(travel | async)?.transport == 'AUTO'">${{(travel | async)?.car.estimate | number}}</span>
+  </div>
+  <p class="c-white animated fadeInLeft"><strong>Destino: </strong>{{(travel | async)?.placeTo?.formatted_address}}</p>
+  <hr class="divider-1">
+  <p class="c-white animated fadeInRight"><strong>Punto de partida: </strong>{{(travel | async)?.placeFrom?.formatted_address}}</p>
+  <hr class="divider-1">
+  <h4 class="c-white text-center">Gastos</h4>
+
+  <div class="gastos-conatiner flex-col">
+    <ion-card class="flex-row-center gasto-card animated bounceInLeft" *ngFor="let gasto of gastos | async; let i = index;" (click)="openGastoOptions(gasto)" [style.animation-delay]="i * 250 + 'ms'">
+      <div [ngSwitch]="gasto.category" style="width: 4rem">
+        <ion-icon name="plane" *ngSwitchCase="'PLANE'"></ion-icon>
+        <ion-icon name="restaurant" *ngSwitchCase="'FOOD'"></ion-icon>
+        <ion-icon name="plane" *ngSwitchCase="'FLIGHTS'"></ion-icon>
+        <ion-icon name="speedometer" *ngSwitchCase="'GAS'"></ion-icon>
+        <ion-icon name="car" *ngSwitchCase="'UBER'"></ion-icon>
+        <ion-icon name="home" *ngSwitchCase="'HOSPEDAJE'"></ion-icon>
+        <ion-icon name="card" *ngSwitchCase="'SERVICES'"></ion-icon>
+        <ion-icon name="more" *ngSwitchCase="'OTHERS'"></ion-icon>
+        <ion-icon name="more" *ngSwitchDefault></ion-icon>
+      </div>
+      <div class="gasto-name-container flex-col" style="align-items: flex-start;">
+        <span class="gasto-name">{{gasto.name}}</span>
+        <span class="gasto-desc c-54">{{gasto.desc}}</span>
+      </div>
+      <div class="gasto-info-container flex-col">
+        <span class="gasto-fecha c-54">{{gasto.date}}</span>
+        <span class="gasto-monto">${{gasto.amount | number}}</span>
+      </div>
+    </ion-card>
+  </div>
+
+  <ion-fab right bottom>
+    <button (click)="openAddGasto(key)" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

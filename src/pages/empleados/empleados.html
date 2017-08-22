@@ -1,0 +1,15 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Empleados</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+    <ion-card class="pol-card flex-col animated slideInLeft" *ngFor="let dude of empleados | async; let i = index"
+    [style.animation-delay]="i * 100 + 'ms'" (click)="openEmpleadoOptions(dude)">
+      <span class="c-54">{{dude.email}}</span>
+    </ion-card>
+</ion-content>

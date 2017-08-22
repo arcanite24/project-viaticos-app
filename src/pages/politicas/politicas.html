@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Politicas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <ion-card class="pol-card flex-col animated slideInLeft" *ngFor="let pol of politicas | async; let i = index" [style.animation-delay]="i * 100 + 'ms'" (click)="openPolOptions(pol)">
+    <span class="c-87">{{pol.name}}</span>
+    <span class="c-54">{{pol.desc}}</span>
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button (click)="openAddPolitica(userId)" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

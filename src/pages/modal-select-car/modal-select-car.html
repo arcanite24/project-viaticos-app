@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Seleccionar auto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button block color="secondary" (click)="close(allCars[selectedCarIndex])">Guardar</button>
+  <ion-list radio-group [(ngModel)]="selectedCarIndex">
+    <ion-list-header>
+      Autos
+    </ion-list-header>
+    <ion-item *ngFor="let car of allCars; let i = index;">
+      <ion-label>{{car.car}}</ion-label>
+      <ion-radio checked="true" [value]="i"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>

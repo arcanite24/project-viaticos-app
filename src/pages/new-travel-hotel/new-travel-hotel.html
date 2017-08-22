@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Seleccionar hotel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="hotel-container flex-col">
+  <button ion-button block color="primary" (click)="next(false)">No necesito hotel</button>
+  <div class="input-effect-container-1">
+    <input type="number" placeholder="Gasto en hotel" [(ngModel)]="hotelPrice">
+  </div>
+  <div class="input-effect-container-1">
+    <input type="text" placeholder="Información adicional del hotel" [(ngModel)]="hotelInfo">
+  </div>
+  <div class="habs-container flex-row-center">
+    <button ion-button icon-only color="secondary" (click)="changeHabs(true, -1)"><ion-icon name="remove"></ion-icon></button>
+    <h4 class="c-white text-center">Adultos: {{habsAdultos | number}}</h4>
+    <button ion-button icon-only color="secondary" (click)="changeHabs(true, 1)"><ion-icon name="add"></ion-icon></button>
+  </div>
+  <div class="habs-container flex-row-center">
+    <button ion-button icon-only color="secondary" (click)="changeHabs(false, -1)"><ion-icon name="remove"></ion-icon></button>
+    <h4 class="c-white text-center">Menores: {{habsMenores | number}}</h4>
+    <button ion-button icon-only color="secondary" (click)="changeHabs(false, 1)"><ion-icon name="add"></ion-icon></button>
+  </div>
+  <h3 class="c-white text-center" *ngIf="hotelPrice">Total del hotel: ${{hotelPrice | number}}</h3>
+  <button ion-button block color="secondary" (click)="next(true)" style="margin-top: 4rem">Siguiente</button>
+</ion-content>

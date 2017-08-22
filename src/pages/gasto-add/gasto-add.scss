@@ -1,0 +1,39 @@
+.icon-cat-container {
+  color: white;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  ion-icon { font-size: 4rem; }
+  span { letter-spacing: 3px; }
+}
+
+.file-input {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+.file-input + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: #b64b4b;
+  display: inline-block;
+  width: 80%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.file-input:focus + label,
+.file-input + label:hover {
+  background-color: #b64b4b;
+}
+
+.file-input + label * {
+	pointer-events: none;
+}
+
+.selected-cat { color: #b64b4b; }

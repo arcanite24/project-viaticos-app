@@ -1,0 +1,31 @@
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="profile-container">
+  <div class="profile-container" padding>
+    <div class="profile-card animated fadeInUp delay-200 flex-col">
+      <ion-spinner *ngIf="!user" color="primary"></ion-spinner>
+      <img [src]="user.photoURL" alt="Profile Picture" *ngIf="user && user.photoURL" class="profile-picture">
+      <h3 class="c-87" *ngIf="user">{{user.displayName}}</h3>
+      <span class="c-54" *ngIf="user">{{user.email}}</span>
+      <ion-list class="w100 profile-list">
+        <ion-item>
+          <strong>Viajes totales: </strong> 10
+        </ion-item>
+        <ion-item>
+          <strong>Gastos totales: </strong> 542
+        </ion-item>
+        <ion-item>
+          <strong>Total registrado: </strong> $124,200
+        </ion-item>
+      </ion-list>
+      <button ion-button color="secondary" (click)="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+</ion-content>

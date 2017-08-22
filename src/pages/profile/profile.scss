@@ -1,0 +1,17 @@
+.profile-container {
+  background-color: #212a5f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.profile-card {
+  background-color: white;
+  width: 90%;
+  padding: 2rem;
+
+  .profile-picture { border-radius: 50%; width: 30%; }
+  .profile-list { margin-top: 2rem; }
+
+}

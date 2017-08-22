@@ -1,0 +1,66 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button (click)="viewCtrl.dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+    <ion-title>Agregar Gasto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <div class="input-effect-container-1">
+    <input type="text" placeholder="Nombre del comercio/gasto" [(ngModel)]="addData.name">
+  </div>
+  <div class="input-effect-container-1">
+    <input type="text" placeholder="Datos adicionales / Comentarios" [(ngModel)]="addData.desc">
+  </div>
+  <div class="input-effect-container-1">
+    <input type="number" placeholder="Total $" [(ngModel)]="addData.amount">
+  </div>
+  <hr class="divider-1">
+  <div class="category-container flex-row-center" style="justify-content: space-around;">
+    <div class="icon-cat-container flex-col" (click)="selectedCategory = 'FOOD'" [ngClass]="{'selected-cat': selectedCategory == 'FOOD'}">
+      <ion-icon name="restaurant"></ion-icon>
+      <span>Comida</span>
+    </div>
+    <div class="icon-cat-container flex-col" (click)="selectedCategory = 'FLIGHTS'" [ngClass]="{'selected-cat': selectedCategory == 'FLIGHTS'}">
+      <ion-icon name="plane"></ion-icon>
+      <span>Vuelos</span>
+    </div>
+    <div class="icon-cat-container flex-col" (click)="selectedCategory = 'GAS'" [ngClass]="{'selected-cat': selectedCategory == 'GAS'}">
+      <ion-icon name="speedometer"></ion-icon>
+      <span>Gasolina</span>
+    </div>
+    <div class="icon-cat-container flex-col" (click)="selectedCategory = 'UBER'" [ngClass]="{'selected-cat': selectedCategory == 'UBER'}">
+      <ion-icon name="car"></ion-icon>
+      <span>Uber</span>
+    </div>
+    <div class="icon-cat-container flex-col" (click)="selectedCategory = 'HOSPEDAJE'" [ngClass]="{'selected-cat': selectedCategory == 'HOSPEDAJE'}">
+      <ion-icon name="home"></ion-icon>
+      <span>Hospedaje</span>
+    </div>
+    <div class="icon-cat-container flex-col" (click)="selectedCategory = 'SERVICES'" [ngClass]="{'selected-cat': selectedCategory == 'SERVICES'}">
+      <ion-icon name="card"></ion-icon>
+      <span>Servicios</span>
+    </div>
+    <div class="icon-cat-container flex-col" (click)="selectedCategory = 'OTHERS'" [ngClass]="{'selected-cat': selectedCategory == 'OTHERS'}">
+      <ion-icon name="more"></ion-icon>
+      <span>Otros</span>
+    </div>
+  </div>
+  <hr class="divider-1">
+  <ion-item style="background: none; color: white;">
+    <ion-label>Fecha</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="addData.date"></ion-datetime>
+  </ion-item>
+  <hr class="divider-1">
+  <div class="file-container flex-col">
+    <input type="file" class="file-input" id="archivo" #archivo>
+    <label for="archivo"> <ion-icon name="cloud-upload"></ion-icon> SUBIR TICKET</label>
+  </div>
+  <hr class="divider-1">
+  <button ion-button block color="secondary" (click)="close(archivo)">Agregar</button>
+</ion-content>

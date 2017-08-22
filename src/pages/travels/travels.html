@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Viajes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-map">
+  <ion-card *ngFor="let travel of travels | async; let i = index;" [style.animation-delay]="i * 250 + 'ms'"
+    class="travel-card flex-col animated fadeInLeft" (click)="openTravel(travel.$key)">
+    <div class="flex-row-center travel-card-title c-87">
+      <ion-icon name="plane" *ngIf="travel.transport == 'AVION'"></ion-icon>
+      <ion-icon name="car" *ngIf="travel.transport == 'AUTO'"></ion-icon>
+      <ion-icon name="bus" *ngIf="travel.transport == 'BUS'"></ion-icon>
+      <span>{{travel.name}}</span>
+    </div>
+    <p class="c-54"><strong>Destino:</strong> {{travel?.placeTo.formatted_address}}</p>
+    <p class="c-54"><strong>Desde:</strong> {{travel?.placeFrom.formatted_address}}</p>
+  </ion-card>
+</ion-content>

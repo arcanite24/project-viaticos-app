@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{fac.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <button ion-button block (click)="viewCtrl.dismiss()">Cerrar</button>
+  <p class="c-white text-center" *ngIf="fac.statu == 2">Aún estamos procesando tu factura.</p>
+  <div class="flex-row-center status-container">
+    <span class="c-white">Status: </span>
+    <div [ngSwitch]="fac.status" style="width: 4rem">
+      <ion-icon name="checkmark" *ngSwitchCase="1" style="color: green"></ion-icon>
+      <ion-icon name="close" *ngSwitchCase="2" style="color: red"></ion-icon>
+      <ion-icon name="alert" *ngSwitchCase="3" style="color: yellow"></ion-icon>
+      <ion-icon name="help" *ngSwitchDefault></ion-icon>
+    </div>
+  </div>
+  <p class="c-white text-center" *ngIf="fac.notas">{{fac.notas}}</p>
+  <a ion-button block color="secondary" target="_blank" [href]="fac.pdf" *ngIf="fac.pdf">PDF <ion-icon name="print"></ion-icon></a>
+  <a ion-button block color="secondary" target="_blank" [href]="fac.xml" *ngIf="fac.xml">XML <ion-icon name="grid"></ion-icon></a>
+</ion-content>

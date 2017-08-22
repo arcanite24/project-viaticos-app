@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Editar politica</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-map flex-col">
+  <div class="input-effect-container-1">
+    <input type="text" placeholder="Nombre" [(ngModel)]="editData.name">
+  </div>
+  <div class="input-effect-container-1">
+    <input type="text" placeholder="Descripción" [(ngModel)]="editData.desc">
+  </div>
+  <button ion-button block color="secondary" (click)="close()">Editar</button>
+  <button ion-button block color="primary" (click)="viewCtrl.dismiss()">Cerrar</button>
+</ion-content>

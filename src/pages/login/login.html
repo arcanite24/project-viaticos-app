@@ -1,0 +1,14 @@
+<ion-content class="login-container">
+  <div class="login-container flex-col">
+    <img src="assets/img/logo.png" alt="Viaticos">
+    <div class="login-inputs-container flex-col">
+      <input type="text" placeholder="Nombre de usuario" class="w100" [(ngModel)]="email">
+      <input type="password" placeholder="Contraseña" class="w100" [(ngModel)]="password">
+    </div>
+    <button (click)="loginEmail()" class="login-button" style="width: 70%;">iniciar sesión</button>
+    <div class="social-login-container">
+      <button ion-button icon-only clear color="blanco" (click)="loginFacebook()"><ion-icon name="logo-facebook"></ion-icon></button>
+    </div>
+    <button ion-button clear block color="blanco" (click)="openRegister()">Registro</button>
+  </div>
+</ion-content>

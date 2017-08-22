@@ -1,0 +1,68 @@
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <ion-title>Nuevo viaje</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="destination-container flex-col">
+  <h3 class="c-white text-center">¿A dónde viajas?</h3>
+  <div class="search-inputs-container">
+    <input placeholder="Busca un destino" autocorrect="off" 
+    autocapitalize="off" spellcheck="off" type="text" class="w100" #search [formControl]="searchControl">
+  </div>
+  <h3 class="c-white text-center">¿Desde dónde viajas?</h3>
+  <div class="search-inputs-container">
+    <input placeholder="Busca un lugar" autocorrect="off" 
+    autocapitalize="off" spellcheck="off" type="text" class="w100" #searchFrom [formControl]="searchControlFrom">
+  </div>
+  <h4 class="c-white text-center">¿En qué viajas?</h4>
+  <div class="transport-buttons-container flex-row-center">
+    <div class="transport-button flex-col" (click)="selectTransport('AVION')" [ngClass]="{'transport-button-selected': transport == 'AVION'}">
+      <ion-icon name="plane"></ion-icon>
+      <span>Avión</span>
+    </div>
+    <div class="transport-button flex-col" (click)="selectTransport('AUTO')" [ngClass]="{'transport-button-selected': transport == 'AUTO'}">
+      <ion-icon name="car"></ion-icon>
+      <span>Auto</span>
+    </div>
+    <div class="transport-button flex-col" (click)="selectTransport('BUS')" [ngClass]="{'transport-button-selected': transport == 'BUS'}">
+      <ion-icon name="bus"></ion-icon>
+      <span>Autobus</span>
+    </div>
+  </div>
+  <div class="select-car flex-col" *ngIf="transport == 'AUTO'">
+    <h5 class="c-white text-center">¿En qué auto viajarás?</h5>
+    <div class="search-car-container flex-row-center w100">
+      <p class="c-white text-center" [hidden]="!((!latitudeFrom && !latitude) || (!latitudeFrom || !latitude))">Selecciona los lugares para poder seleccionar un auto.</p>
+      <input type="text" [(ngModel)]="searchCar" name="searchCar" placeholder="Buscar Auto, Ej: Audi A3 2017" [disabled]="(!latitudeFrom && !latitude) || (!latitudeFrom || !latitude)">
+      <button ion-button icon-only color="secondary" (click)="searchCarKpl(searchCar)"><ion-icon name="search"></ion-icon></button>
+      <h6 class="c-white text-center" *ngIf="selectedCar">Auto seleccionado: {{selectedCar.car}}</h6>
+      <h2 class="c-white text-center" *ngIf="carDistance">Gasolina: <strong>${{gasEstimate | number}}</strong></h2>
+      <div class="info flex-col">
+        <p class="c-white text-center" *ngIf="carDistance">Monto calculado de la gasolina solo de ida. Precio de ambos trayectos: ${{gasEstimate * 2 | number}}</p>
+        <h4 class="c-white text-center" *ngIf="carDistance">Kilometros: <strong>{{carDistance.distance.text}}</strong></h4>
+        <h4 class="c-white text-center" *ngIf="carDistance">Tiempo: <strong>{{carDistance.duration.text}}</strong></h4>
+      </div>
+      <button ion-button block color="secondary" *ngIf="gasEstimate" (click)="next(transport)">Siguiente</button>
+    </div>
+  </div>
+  <div class="select-plane flex-col" *ngIf="transport == 'AVION'">
+    <p class="c-white text-center" *ngIf="!latitudeFrom">Ingresa desde donde viajas.</p>
+    <p class="c-white text-center" *ngIf="!latitude">Ingresa a donde viajas.</p>
+    <div class="search-inputs-container" [hidden]="(!latitudeFrom && !latitude) || (!latitudeFrom || !latitude)">
+      <input type="number" class="w100" placeholder="Costo del vuelo" [(ngModel)]="flightPrice">
+    </div>
+    <div class="search-inputs-container" [hidden]="(!latitudeFrom && !latitude) || (!latitudeFrom || !latitude)">
+      <input type="text" class="w100" placeholder="Notas adicionales" [(ngModel)]="flightDetails">
+    </div>
+    <button ion-button block (click)="openGoogleFlights()" [hidden]="(!latitudeFrom && !latitude) || (!latitudeFrom || !latitude)" color="primary">¿No tienes vuelo? Busca uno</button>
+    <h2 class="c-white text-center" *ngIf="flightPrice && flightPrice > 0">Costo del vuelo: <strong>${{flightPrice | number}}</strong></h2>
+    <button ion-button block color="secondary" *ngIf="flightPrice && flightPrice > 0" (click)="next(transport)">Siguiente</button>
+  </div>
+  <div class="select-bus" *ngIf="transport == 'BUS'">
+    
+  </div>
+</ion-content>

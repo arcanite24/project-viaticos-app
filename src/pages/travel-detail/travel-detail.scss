@@ -1,0 +1,23 @@
+.title-container {
+  color: white;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  ion-icon { font-size: 4rem; margin-right: 2rem; }
+  span { font-size: 2rem; letter-spacing: 5px; }
+}
+
+.gasto-card {
+  padding: 1rem;
+  ion-icon { font-size: 3rem; color: #b64b4b; margin-right: 1rem; }
+  span.gasto-name {
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+  .gasto-info-container {
+    margin-left: auto;
+    span.gasto-fecha { font-size: 1rem; }
+    span.gasto-monto { font-size: 1.75rem; margin-top: 0.5rem; color: #b64b4b; }
+  }
+}
